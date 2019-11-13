@@ -4,6 +4,8 @@ import json
 
 ##set this value to your Mysql Daatabasee host IP aadddress
 whichhost = ''
+mysqluser = 'webdev'
+mysqlpass = 'webdev'
 
 app = Flask(__name__)
 app.debug = True
@@ -16,7 +18,7 @@ def index():
 @app.route('/chatdata', methods=['GET'])
 def chatdata():
     try:
-        cnx = mysql.connector.connect(user='webdev',password='webdev',host=whichhost,database='webdev')
+        cnx = mysql.connector.connect(user=mysqluser,password=mysqlpass,host=whichhost,database='webdev')
         cursor = cnx.cursor(dictionary=True)
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -38,7 +40,7 @@ def newtext():
             print(request.form.get('newcomment'))
             return Response('{"Status":"No Data to Post"}',mimetype='application/json')
     try:
-        cnx = mysql.connector.connect(user='webdev',password='webdev',host=whichhost,database='webdev')
+        cnx = mysql.connector.connect(user=mysqluser,password=mysqlpass,host=whichhost,database='webdev')
         cursor = cnx.cursor()
         print("INSERT into `chatdb` (`comment`) VALUES ('"+request.form.get('newcomment')+"')")
         query = ("INSERT into `chatdb` (`comment`) VALUES ('"+request.form.get('newcomment')+"')")
