@@ -53,7 +53,7 @@ setInterval(function(){getChatData()},3000);
 });
 </script>
 
-    <title>Document</title>
+    <title>{{webpagetitle}}</title>
 </head>
 <body>
     <div id="formtop">
@@ -63,11 +63,7 @@ setInterval(function(){getChatData()},3000);
        
     </div>
     <div id="chatbox">
-        {% for i in test %}
-        <div id="chatid">{{i.0}}</div>
-        <div id="chattext">{{i.1}}</div>
-        <div id="chattime">{{i.2}}</div>
-        {% endfor %}
+
     </div>
     
     
